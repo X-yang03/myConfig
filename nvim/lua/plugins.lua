@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "tanvirtin/monokai.nvim",    
+    "tanvirtin/monokai.nvim", --theme
     -- Vscode-like pictograms
 	{
 		"onsails/lspkind.nvim",
@@ -42,12 +42,75 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     {
-        "kyazdani42/nvim-tree.lua", 
-         event = "VimEnter", 
+        "kyazdani42/nvim-tree.lua",
+         event = "VimEnter",
          dependencies = "nvim-tree/nvim-web-devicons",
            config = function()
                  require("config.nvim-tree")
              end,
     },
+    -- pair brackets
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = function ()
+            require("config.autopairs")
+        end,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+    },
 
+    -- UI
+    {
+        "nvim-lualine/lualine.nvim",
+        config = function ()
+            require("config.lualine")
+        end,
+    },
+    {
+        "akinsho/bufferline.nvim",
+        config = function ()
+            require("config.bufferline")
+        end,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function ()
+            require("config.gitsigns")
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter", -- Hightlight
+    },
+    {
+        "p00f/nvim-ts-rainbow", -- different colors for different brakets
+        dependencies = "nvim-treesitter/nvim-treesitter",
+    },
+
+
+    -- file searching
+    {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = { "nvim-lua/plenary.nvim",
+                        "BurntSushi/ripgrep" -- sudo apt install
+                    },
+    },
+    ui = {
+    icons = { -- 各种元素的图标配置
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      require = "🌙",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+        },
+    },
 })
