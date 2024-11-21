@@ -37,7 +37,7 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
 --Plugins
-vim.keymap.set('n', '<leader>tr', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>')
 -- Tab: Check the folder
 -- o/<CR>: Open the file
 --bufferline

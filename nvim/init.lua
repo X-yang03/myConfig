@@ -6,3 +6,4 @@ require('lsp')
 
 require('config/telescope')
 require('config/tree-sitter')
+require('config/copilot')

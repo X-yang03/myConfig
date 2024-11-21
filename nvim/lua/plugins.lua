@@ -96,6 +96,13 @@ require("lazy").setup({
                         "BurntSushi/ripgrep" -- sudo apt install
                     },
     },
+    {
+    'terrortylor/nvim-comment',
+       config =  function ()
+            require('config.nvim-comment')
+        end
+    },
+
     ui = {
     icons = { -- 各种元素的图标配置
       cmd = "⌘",
