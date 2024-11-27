@@ -12,7 +12,7 @@ nvim_tree.setup({
 	},
 	-- 过滤文件
 	filters = {
-		dotfiles = true, -- 过滤 dotfile
+		--dotfiles = true, -- 过滤 dotfile
 		custom = { "node_modules" }, -- 其他过滤目录
 	},
   view = {

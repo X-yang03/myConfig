@@ -37,11 +37,6 @@ local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	if client.name == "rust_analyzer" then
-		-- WARNING: This feature requires Neovim 0.10 or later.
-		vim.lsp.inlay_hint.enable()
-	end
-
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -80,6 +75,8 @@ lspconfig.pylsp.setup({
 
 lspconfig.clangd.setup({
         on_attach = on_attach,
+        cmd = {"clangd", "--compile-commands-dir=."}, -- Use compile_commands.json in the current directory
+        root_dir = lspconfig.util.root_pattern("compile_commands.json", ".clangd", ".git"),
     })
 
     lspconfig.svls.setup({
